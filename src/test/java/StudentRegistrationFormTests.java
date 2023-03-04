@@ -38,7 +38,8 @@ public class StudentRegistrationFormTests {
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(text("John Doe"), text("johndoe@gmail.com"), text("Male"),
-                text("Arts, Physics"), text("Music"), text("pic.jpg"), text("Rajasthan Jaiselmer"));
+                text("5553331234"), text("22 April,1990"), text("Arts, Physics"), text("Music"), text("pic.jpg"),
+                text("Current Address"), text("Rajasthan Jaiselmer"));
 
         $("#closeLargeModal").click();
     }
