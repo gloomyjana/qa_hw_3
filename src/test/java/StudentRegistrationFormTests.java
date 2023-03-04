@@ -34,7 +34,7 @@ public class StudentRegistrationFormTests {
         $("#city").click();
         $("#react-select-4-option-1").click();
         $("#submit").click();
-        sleep(5000);
+//        sleep(5000);
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(text("John Doe"), text("johndoe@gmail.com"), text("Male"),
