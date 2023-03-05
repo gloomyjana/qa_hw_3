@@ -7,8 +7,22 @@ import static com.codeborne.selenide.Selenide.*;
 public class GithubCheckTests {
     @Test
     void checkJUnit5CodeExampleTest() {
-        String codeExample = "@ExtendWith({SoftAssertsExtension.class})\n" +
+        String codeExample1 = "@ExtendWith({SoftAssertsExtension.class})\n" +
                 "class Tests {\n" +
+                "  @Test\n" +
+                "  void test() {\n" +
+                "    Configuration.assertionMode = SOFT;\n" +
+                "    open(\"page.html\");\n" +
+                "\n" +
+                "    $(\"#first\").should(visible).click();\n" +
+                "    $(\"#second\").should(visible).click();\n" +
+                "  }\n" +
+                "}";
+
+        String codeExample2 = "class Tests {\n" +
+                "  @RegisterExtension \n" +
+                "  static SoftAssertsExtension softAsserts = new SoftAssertsExtension();\n" +
+                "\n" +
                 "  @Test\n" +
                 "  void test() {\n" +
                 "    Configuration.assertionMode = SOFT;\n" +
@@ -25,6 +39,6 @@ public class GithubCheckTests {
         $(".wiki-more-pages-link").$("button").click();
         $(".Box--condensed").shouldHave(text("SoftAssertions"));
         $(byText("SoftAssertions")).click();
-        $(".markdown-body").shouldHave(text(codeExample));
+        $(".markdown-body").shouldHave(text(codeExample1), text(codeExample2));
     }
 }
